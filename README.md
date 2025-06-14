@@ -1,3 +1,5 @@
-# floooooorrrio progress markdown maker
+# florrio mob/petal status viewer
 
-imoonctoyy
+## what is ./client?
+
+for yajusenpai source code
