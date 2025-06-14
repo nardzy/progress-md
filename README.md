@@ -2,4 +2,4 @@
 
 ## what is ./client?
 
-for yajusenpai source code /unused functions
+for yajusenpai source code / unused functions
