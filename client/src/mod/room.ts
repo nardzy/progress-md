@@ -70,7 +70,7 @@ export class Room {
             await this.fn(id, src, this.tw, this.th, this.tile);
 
         }
-        for (const [id, src] of mob_ext) {
+        /*for (const [id, src] of mob_ext) {
 
             await this.fn(id, src, 256, 256, this.mob);
 
@@ -79,7 +79,7 @@ export class Room {
 
             await this.fn(id, src, 256, 256, this.petal);
 
-        }
+        }*/
 
         const b = performance.now() - a;
 

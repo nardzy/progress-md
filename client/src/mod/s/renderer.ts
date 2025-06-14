@@ -227,6 +227,7 @@ export class Renderer {
 
         }
 
+        /*
         for (let i = 0; i < room.biome.mobs.length; i++) {
 
             const mob = room.biome.mobs[i];
@@ -301,7 +302,7 @@ export class Renderer {
 
         }
 
-        ctx.drawImage(this.offcvs, 0, 0, this.vw, this.vh);
+        ctx.drawImage(this.offcvs, 0, 0, this.vw, this.vh);*/
 
         ctx.fillStyle = "#fff";
         ctx.strokeStyle = "#000";
