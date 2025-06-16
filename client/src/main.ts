@@ -40,6 +40,18 @@ const main = async () => {
 
     });
 
+    addEventListener("touchstart", (event) => {
+
+        const touch = event.changedTouches[0];
+
+        renderer.mouse_move(
+            touch.clientX,
+            touch.clientY
+        );
+        renderer.click = true;
+
+    });
+
     const render_loop = (time: number) => {
 
         renderer.loop(

@@ -138,6 +138,18 @@ const create_out_area = () => {
 
 };
 
+const create_copy_button = () => {
+
+    const b = document.createElement("button");
+
+    b.textContent = "copykisugi";
+    b.name = "yajusen";
+    imoon.appendChild(b);
+
+    return b;
+
+};
+
 export const md = () => {
 
     imoon.style.position = "absolute";
@@ -160,6 +172,8 @@ export const md = () => {
         create_input("Web"),
         create_input("Wing")
     ];
+
+    const copybtn = create_copy_button();
 
     const area = create_out_area();
 
@@ -204,5 +218,35 @@ export const md = () => {
     }
 
     imo();
+
+    copybtn
+    .addEventListener("click", () => {
+
+        if (!navigator.clipboard) {
+            alert(`error on navigator.clipboard.writeText\nヌゥン！ヘッ！ヘッ！
+
+ア゛ア゛ア゛ア゛ァ゛ァ゛ァ゛ァ゛
+
+ア゛↑ア゛↑ア゛↑ア゛↑ア゛ア゛ア゛ァ゛ァ゛ァ゛ァ゛！！！！
+
+ウ゛ア゛ア゛ア゛ア゛ア゛ア゛ァ゛ァ゛ァ゛ァ゛ァ゛ァ゛ァ！！！！！
+
+フ ウ゛ウ゛ウ゛ゥ゛ゥ゛ゥ゛ン！！！！
+
+フ ウ゛ゥ゛ゥ゛ゥン！！！！(大迫真)
+
+`);
+            return;
+        }
+
+        navigator.clipboard?.writeText(
+            area.value
+        ).then(() => {
+            alert("copied to clipboard");
+        }).catch(e => {
+            alert(`copy error: ${e}`);
+        });
+
+    });
 
 };
