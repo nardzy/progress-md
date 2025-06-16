@@ -2,7 +2,10 @@
 type PetalEntries = [name: string, count: number][];
 
 const ORACLE = 253;
-const fmt = (entries: PetalEntries) => {
+const fmt = (
+    oracle: number,
+    entries: PetalEntries
+) => {
 
     const petals = new Map(entries);
 
@@ -17,10 +20,19 @@ const fmt = (entries: PetalEntries) => {
             name_len = name.length;
         }
 
-        const c = `${count}${ORACLE}`.length + 3;
+        const c = `${count}${oracle}`.length + 3;
 
         if (count_len < c) {
             count_len = c;
+        }
+
+        const d = oracle - count;
+        const daaa = `${d < 0 ? "+" : ""}${Math.abs(d).toString()}`;
+
+        const maa = daaa.length;
+
+        if (dif_len < maa) {
+            dif_len = maa;
         }
 
     }
@@ -69,15 +81,15 @@ const fmt = (entries: PetalEntries) => {
 
     for (const [name, count] of [...petals.entries()].sort((a, b) => b[1] - a[1])) {
 
-        const percent = `${((count / ORACLE) * 100).toFixed(2)}%`;
-        const c = `${ORACLE} - ${count}`;
-        const d = ORACLE - count;
+        const percent = `${((count / oracle) * 100).toFixed(2)}%`;
+        const c = `${oracle} - ${count}`;
+        const d = oracle - count;
         const diff = `${d < 0 ? "+" : ""}${Math.abs(d).toString()}`;
 
         const confg = {
             a: r(name_len - name.length),
             b: r(count_len - c.length),
-            c: r(3 - dif_len),
+            c: r(dif_len - diff.length),
             d: r(7 - percent.length),
         };
 
@@ -129,8 +141,14 @@ const create_out_area = () => {
 export const md = () => {
 
     imoon.style.position = "absolute";
-    imoon.style.right = "0";
+    imoon.style.top = "50%";
+    imoon.style.left = "50%";
+    imoon.style.transform = "translate(-50%, -50%)";
     document.body.appendChild(imoon);
+
+    const oracle = create_input("goal");
+
+    oracle.value = ORACLE.toString();
 
     const petals = [
         create_input("Antennae"),
@@ -164,11 +182,18 @@ export const md = () => {
 
         }
 
-        const out = fmt(entries);
+        const out = fmt(
+            Number.parseInt(oracle.value) || 0,
+            entries
+        );
 
         area.value = out;
 
     };
+
+    oracle.addEventListener("input", () => {
+        imo();
+    });
 
     for (const i of petals) {
 
